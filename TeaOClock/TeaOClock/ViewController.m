@@ -21,6 +21,11 @@
 
 @end
 
+typedef NS_ENUM(NSUInteger, CountdownState) {
+    CountdownStateIsCountingDown,
+    CountdownStateIsStopped
+};
+
 #define DEFAULT_MINUTES 3
 
 @implementation ViewController
@@ -42,8 +47,7 @@
 
 - (IBAction)startAction: (id)sender
 {
-    self.startButton.enabled = NO;
-    self.stopButton.enabled = YES;
+    [self updateUIForCountdownState: CountdownStateIsCountingDown];
     
     self.seconds = self.minutes * 60;
     self.timer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector: @selector(decrementSeconds) userInfo: nil repeats: YES];
@@ -81,10 +85,19 @@
 
 - (void)stopTimer
 {
-    self.startButton.enabled = YES;
-    self.stopButton.enabled = NO;
-    
+    [self updateUIForCountdownState: CountdownStateIsStopped];
     [self.timer invalidate];
+}
+
+- (void)updateUIForCountdownState: (CountdownState)countdownState
+{
+    BOOL isStopped = countdownState == CountdownStateIsStopped;
+    
+    self.startButton.enabled = isStopped;
+    self.stopButton.enabled = !isStopped;
+    self.stepper.enabled = isStopped;
+    self.minutesLabel.textColor = isStopped ? [NSColor blackColor] : [NSColor grayColor];
+    self.countdownLabel.textColor = isStopped ? [NSColor grayColor] : [NSColor blackColor];
 }
 
 @end
