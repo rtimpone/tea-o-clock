@@ -15,8 +15,10 @@
 @property (weak) IBOutlet NSStepper *stepper;
 @property (weak) IBOutlet NSButton *startButton;
 @property (weak) IBOutlet NSButton *stopButton;
+
 @property (nonatomic) NSInteger minutes;
 @property (nonatomic) NSInteger seconds;
+
 @property (strong) NSTimer *timer;
 
 @end
@@ -33,8 +35,6 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self.stepper setIntegerValue: DEFAULT_MINUTES];
     self.minutes = DEFAULT_MINUTES;
 }
 
@@ -63,13 +63,22 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
 - (void)setMinutes: (NSInteger)minutes
 {
     _minutes = minutes;
-    self.minutesLabel.stringValue = [NSString stringWithFormat: @"Minutes: %ld", (long)minutes];
+    self.minutesLabel.stringValue = [NSString stringWithFormat: @"%ld min", (long)minutes];
 }
 
 - (void)setSeconds: (NSInteger)seconds
 {
     _seconds = seconds;
-    self.countdownLabel.stringValue = [NSString stringWithFormat: @"%ld", (long)seconds];
+    
+    static NSDateComponentsFormatter *dcf;
+    if (!dcf)
+    {
+        dcf = [NSDateComponentsFormatter new];
+        dcf.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorPad;
+        dcf.allowedUnits = NSCalendarUnitMinute | NSCalendarUnitSecond;
+    }
+    
+    self.countdownLabel.stringValue = [dcf stringFromTimeInterval: seconds];
 }
 
 #pragma mark - Helpers
