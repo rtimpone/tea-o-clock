@@ -13,6 +13,8 @@
 @property (weak) IBOutlet NSTextField *minutesLabel;
 @property (weak) IBOutlet NSTextField *countdownLabel;
 @property (weak) IBOutlet NSStepper *stepper;
+@property (weak) IBOutlet NSButton *startButton;
+@property (weak) IBOutlet NSButton *stopButton;
 @property (nonatomic) NSInteger minutes;
 
 @end
@@ -36,14 +38,28 @@
     self.minutes = sender.integerValue;
 }
 
+- (IBAction)startAction: (id)sender
+{
+    self.startButton.enabled = NO;
+    self.stopButton.enabled = YES;
+    
+    //start timer
+}
+
+- (IBAction)stopAction: (id)sender
+{
+    self.startButton.enabled = YES;
+    self.stopButton.enabled = NO;
+    
+    //reset timer
+}
+
 #pragma mark - Setters
 
 - (void)setMinutes: (NSInteger)minutes
 {
     _minutes = minutes;
-    
-    NSString *intString = [NSString stringWithFormat: @"Minutes: %ld", (long)self.minutes];
-    [self.minutesLabel setStringValue: intString];
+    self.minutesLabel.stringValue = [NSString stringWithFormat: @"Minutes: %ld", (long)self.minutes];
 }
 
 
