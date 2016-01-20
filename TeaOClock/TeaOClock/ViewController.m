@@ -105,8 +105,8 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
     self.startButton.enabled = isStopped;
     self.stopButton.enabled = !isStopped;
     self.stepper.enabled = isStopped;
-    self.minutesLabel.textColor = isStopped ? [NSColor blackColor] : [NSColor grayColor];
-    self.countdownLabel.textColor = isStopped ? [NSColor grayColor] : [NSColor blackColor];
+    self.minutesLabel.textColor = isStopped ? [NSColor whiteColor] : [NSColor grayColor];
+    self.countdownLabel.textColor = isStopped ? [NSColor grayColor] : [NSColor whiteColor];
 }
 
 @end

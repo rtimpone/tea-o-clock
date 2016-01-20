@@ -287,6 +287,7 @@
 				DA831B3F1C4F2E010086AE8B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
