@@ -88,6 +88,9 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
     self.seconds = self.seconds - 1;
     if (self.seconds == 0)
     {
+        //bounce the dock icon until the app becomes active again
+        [[NSApplication sharedApplication] requestUserAttention: NSCriticalRequest];
+        
         [self stopTimer];
     }
 }
