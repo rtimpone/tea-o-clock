@@ -88,10 +88,13 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
     self.seconds = self.seconds - 1;
     if (self.seconds == 0)
     {
+        [self stopTimer];
+        
         //bounce the dock icon until the app becomes active again
         [[NSApplication sharedApplication] requestUserAttention: NSCriticalRequest];
         
-        [self stopTimer];
+        //show a standard popup notification to the user
+        [self showUserNotification];
     }
 }
 
@@ -110,6 +113,15 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
     self.stepper.enabled = isStopped;
     self.minutesLabel.textColor = isStopped ? [NSColor whiteColor] : [NSColor grayColor];
     self.countdownLabel.textColor = isStopped ? [NSColor grayColor] : [NSColor whiteColor];
+}
+
+- (void)showUserNotification
+{
+    NSUserNotification *notification = [NSUserNotification new];
+    notification.title = @"Timer Finished!";
+    notification.informativeText = @"Enjoy your tea";
+    notification.soundName = NSUserNotificationDefaultSoundName;
+    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification: notification];
 }
 
 @end

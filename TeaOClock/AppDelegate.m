@@ -8,18 +8,22 @@
 
 #import "AppDelegate.h"
 
-@interface AppDelegate ()
+@interface AppDelegate () <NSUserNotificationCenterDelegate>
 
 @end
 
 @implementation AppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    // Insert code here to initialize your application
+- (void)applicationDidFinishLaunching: (NSNotification *)notification
+{
+    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate: self];
 }
 
-- (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
+#pragma mark - User Notification Center Delegate
+
+- (BOOL)userNotificationCenter: (NSUserNotificationCenter *)center shouldPresentNotification: (NSUserNotification *)notification
+{
+    return YES;
 }
 
 @end
