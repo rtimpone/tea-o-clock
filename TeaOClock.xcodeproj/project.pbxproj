@@ -7,23 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA047ACB1C51C29900394C9B /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA047ACA1C51C29900394C9B /* TimerManager.m */; };
-		DA831B2E1C4F2E010086AE8B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B2D1C4F2E010086AE8B /* AppDelegate.m */; };
+		DA047ACB1C51C29900394C9B /* TOCTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA047ACA1C51C29900394C9B /* TOCTimerManager.m */; };
+		DA831B2E1C4F2E010086AE8B /* TOCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B2D1C4F2E010086AE8B /* TOCAppDelegate.m */; };
 		DA831B311C4F2E010086AE8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B301C4F2E010086AE8B /* main.m */; };
-		DA831B341C4F2E010086AE8B /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B331C4F2E010086AE8B /* MasterViewController.m */; };
+		DA831B341C4F2E010086AE8B /* TOCMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B331C4F2E010086AE8B /* TOCMasterViewController.m */; };
 		DA831B361C4F2E010086AE8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA831B351C4F2E010086AE8B /* Assets.xcassets */; };
 		DA831B391C4F2E010086AE8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA831B371C4F2E010086AE8B /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DA047AC91C51C29900394C9B /* TimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerManager.h; sourceTree = "<group>"; };
-		DA047ACA1C51C29900394C9B /* TimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerManager.m; sourceTree = "<group>"; };
+		DA047AC91C51C29900394C9B /* TOCTimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCTimerManager.h; sourceTree = "<group>"; };
+		DA047ACA1C51C29900394C9B /* TOCTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCTimerManager.m; sourceTree = "<group>"; };
 		DA831B291C4F2E000086AE8B /* TeaOClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaOClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA831B2C1C4F2E010086AE8B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		DA831B2D1C4F2E010086AE8B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DA831B2C1C4F2E010086AE8B /* TOCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TOCAppDelegate.h; sourceTree = "<group>"; };
+		DA831B2D1C4F2E010086AE8B /* TOCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TOCAppDelegate.m; sourceTree = "<group>"; };
 		DA831B301C4F2E010086AE8B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DA831B321C4F2E010086AE8B /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
-		DA831B331C4F2E010086AE8B /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
+		DA831B321C4F2E010086AE8B /* TOCMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TOCMasterViewController.h; sourceTree = "<group>"; };
+		DA831B331C4F2E010086AE8B /* TOCMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TOCMasterViewController.m; sourceTree = "<group>"; };
 		DA831B351C4F2E010086AE8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA831B381C4F2E010086AE8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA831B3A1C4F2E010086AE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -59,12 +59,12 @@
 		DA831B2B1C4F2E000086AE8B /* TeaOClock */ = {
 			isa = PBXGroup;
 			children = (
-				DA831B2C1C4F2E010086AE8B /* AppDelegate.h */,
-				DA831B2D1C4F2E010086AE8B /* AppDelegate.m */,
-				DA047AC91C51C29900394C9B /* TimerManager.h */,
-				DA047ACA1C51C29900394C9B /* TimerManager.m */,
-				DA831B321C4F2E010086AE8B /* MasterViewController.h */,
-				DA831B331C4F2E010086AE8B /* MasterViewController.m */,
+				DA831B2C1C4F2E010086AE8B /* TOCAppDelegate.h */,
+				DA831B2D1C4F2E010086AE8B /* TOCAppDelegate.m */,
+				DA047AC91C51C29900394C9B /* TOCTimerManager.h */,
+				DA047ACA1C51C29900394C9B /* TOCTimerManager.m */,
+				DA831B321C4F2E010086AE8B /* TOCMasterViewController.h */,
+				DA831B331C4F2E010086AE8B /* TOCMasterViewController.m */,
 				DA831B351C4F2E010086AE8B /* Assets.xcassets */,
 				DA831B371C4F2E010086AE8B /* Main.storyboard */,
 				DA831B3A1C4F2E010086AE8B /* Info.plist */,
@@ -150,10 +150,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA831B341C4F2E010086AE8B /* MasterViewController.m in Sources */,
-				DA047ACB1C51C29900394C9B /* TimerManager.m in Sources */,
+				DA831B341C4F2E010086AE8B /* TOCMasterViewController.m in Sources */,
+				DA047ACB1C51C29900394C9B /* TOCTimerManager.m in Sources */,
 				DA831B311C4F2E010086AE8B /* main.m in Sources */,
-				DA831B2E1C4F2E010086AE8B /* AppDelegate.m in Sources */,
+				DA831B2E1C4F2E010086AE8B /* TOCAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

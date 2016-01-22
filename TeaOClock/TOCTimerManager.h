@@ -1,5 +1,5 @@
 //
-//  TimerManager.h
+//  TOCTimerManager.h
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/21/16.
@@ -8,21 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
-@class TimerManager;
+@class TOCTimerManager;
 
-@protocol TimerManagerDelegate <NSObject>
+@protocol TOCTimerManagerDelegate <NSObject>
 
 /** Called each second as the timer counts down to zero */
-- (void)timerManager: (TimerManager *)manager secondsRemainingDidChange: (NSInteger)secondsRemaining;
+- (void)timerManager: (TOCTimerManager *)manager secondsRemainingDidChange: (NSInteger)secondsRemaining;
 
 /** Called when the timer reaches zero seconds remaining */
-- (void)timerManagerTimerDidFinish: (TimerManager *)manager;
+- (void)timerManagerTimerDidFinish: (TOCTimerManager *)manager;
 
 @end
 
-@interface TimerManager : NSObject
+@interface TOCTimerManager : NSObject
 
-@property (weak) IBOutlet id <TimerManagerDelegate> delegate;
+@property (weak) IBOutlet id <TOCTimerManagerDelegate> delegate;
 @property (nonatomic) NSInteger minutes;
 
 - (void)startTimer;

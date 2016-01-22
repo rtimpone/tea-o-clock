@@ -1,15 +1,15 @@
 //
-//  MasterViewController.m
+//  TOCMasterViewController.m
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/19/16.
 //  Copyright © 2016 Rob Timpone. All rights reserved.
 //
 
-#import "TimerManager.h"
-#import "MasterViewController.h"
+#import "TOCTimerManager.h"
+#import "TOCMasterViewController.h"
 
-@interface MasterViewController () <TimerManagerDelegate>
+@interface TOCMasterViewController () <TOCTimerManagerDelegate>
 
 @property (weak) IBOutlet NSTextField *minutesLabel;
 @property (weak) IBOutlet NSTextField *countdownLabel;
@@ -17,7 +17,7 @@
 @property (weak) IBOutlet NSButton *startButton;
 @property (weak) IBOutlet NSButton *stopButton;
 
-@property (strong) IBOutlet TimerManager *timerManager;
+@property (strong) IBOutlet TOCTimerManager *timerManager;
 
 @end
 
@@ -26,11 +26,11 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
     CountdownStateIsStopped
 };
 
-@implementation MasterViewController
+@implementation TOCMasterViewController
 
 #pragma mark - Timer Manager Delegate
 
-- (void)timerManager: (TimerManager *)manager secondsRemainingDidChange: (NSInteger)secondsRemaining
+- (void)timerManager: (TOCTimerManager *)manager secondsRemainingDidChange: (NSInteger)secondsRemaining
 {
     static NSDateComponentsFormatter *dcf;
     if (!dcf)
@@ -43,7 +43,7 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
     self.countdownLabel.stringValue = [dcf stringFromTimeInterval: secondsRemaining];
 }
 
-- (void)timerManagerTimerDidFinish: (TimerManager *)manager
+- (void)timerManagerTimerDidFinish: (TOCTimerManager *)manager
 {
     [self updateUIForCountdownState: CountdownStateIsStopped];
     

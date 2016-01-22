@@ -1,5 +1,5 @@
 //
-//  MasterViewController.h
+//  TOCMasterViewController.h
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/19/16.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface MasterViewController : NSViewController
+@interface TOCMasterViewController : NSViewController
 
 
 @end

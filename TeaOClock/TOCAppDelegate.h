@@ -1,5 +1,5 @@
 //
-//  AppDelegate.h
+//  TOCAppDelegate.h
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/19/16.
@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface TOCAppDelegate : NSObject <NSApplicationDelegate>
 
 
 @end
