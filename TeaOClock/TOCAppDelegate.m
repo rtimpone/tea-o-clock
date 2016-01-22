@@ -1,18 +1,18 @@
 //
-//  AppDelegate.m
+//  TOCAppDelegate.m
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/19/16.
 //  Copyright © 2016 Rob Timpone. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "TOCAppDelegate.h"
 
-@interface AppDelegate () <NSUserNotificationCenterDelegate>
+@interface TOCAppDelegate () <NSUserNotificationCenterDelegate>
 
 @end
 
-@implementation AppDelegate
+@implementation TOCAppDelegate
 
 - (void)applicationDidFinishLaunching: (NSNotification *)notification
 {
