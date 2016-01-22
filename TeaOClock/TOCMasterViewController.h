@@ -10,6 +10,5 @@
 
 @interface TOCMasterViewController : NSViewController
 
-
 @end
 

@@ -6,6 +6,7 @@
 //  Copyright © 2016 Rob Timpone. All rights reserved.
 //
 
+#import "TOCNotificationManager.h"
 #import "TOCTimerManager.h"
 #import "TOCMasterViewController.h"
 
@@ -17,6 +18,7 @@
 @property (weak) IBOutlet NSButton *startButton;
 @property (weak) IBOutlet NSButton *stopButton;
 
+@property (strong) IBOutlet TOCNotificationManager *notificationManager;
 @property (strong) IBOutlet TOCTimerManager *timerManager;
 
 @end
@@ -47,10 +49,8 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
 {
     [self updateUIForCountdownState: CountdownStateIsStopped];
     
-    //bounce the dock icon until the app becomes active again
-    [[NSApplication sharedApplication] requestUserAttention: NSCriticalRequest];
-    
-    [self showUserNotification];
+    [self.notificationManager bounceDockBarIcon];
+    [self.notificationManager showTimerFinishedUserNotification];
 }
 
 #pragma mark - Actions
@@ -85,15 +85,6 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
     self.stepper.enabled = isStopped;
     self.minutesLabel.textColor = isStopped ? [NSColor whiteColor] : [NSColor grayColor];
     self.countdownLabel.textColor = isStopped ? [NSColor grayColor] : [NSColor whiteColor];
-}
-
-- (void)showUserNotification
-{
-    NSUserNotification *notification = [NSUserNotification new];
-    notification.title = @"Timer Finished!";
-    notification.informativeText = @"Enjoy your tea";
-    notification.soundName = NSUserNotificationDefaultSoundName;
-    [[NSUserNotificationCenter defaultUserNotificationCenter] deliverNotification: notification];
 }
 
 @end
