@@ -6,6 +6,8 @@
 //  Copyright © 2016 Rob Timpone. All rights reserved.
 //
 
+@import Cocoa;
+
 #import "TOCNotificationManager.h"
 
 @implementation TOCNotificationManager
