@@ -1,5 +1,5 @@
 //
-//  ViewController.m
+//  MasterViewController.m
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/19/16.
@@ -7,9 +7,9 @@
 //
 
 #import "TimerManager.h"
-#import "ViewController.h"
+#import "MasterViewController.h"
 
-@interface ViewController () <TimerManagerDelegate>
+@interface MasterViewController () <TimerManagerDelegate>
 
 @property (weak) IBOutlet NSTextField *minutesLabel;
 @property (weak) IBOutlet NSTextField *countdownLabel;
@@ -26,7 +26,7 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
     CountdownStateIsStopped
 };
 
-@implementation ViewController
+@implementation MasterViewController
 
 #pragma mark - Timer Manager Delegate
 

@@ -10,7 +10,7 @@
 		DA047ACB1C51C29900394C9B /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA047ACA1C51C29900394C9B /* TimerManager.m */; };
 		DA831B2E1C4F2E010086AE8B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B2D1C4F2E010086AE8B /* AppDelegate.m */; };
 		DA831B311C4F2E010086AE8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B301C4F2E010086AE8B /* main.m */; };
-		DA831B341C4F2E010086AE8B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B331C4F2E010086AE8B /* ViewController.m */; };
+		DA831B341C4F2E010086AE8B /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B331C4F2E010086AE8B /* MasterViewController.m */; };
 		DA831B361C4F2E010086AE8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA831B351C4F2E010086AE8B /* Assets.xcassets */; };
 		DA831B391C4F2E010086AE8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA831B371C4F2E010086AE8B /* Main.storyboard */; };
 /* End PBXBuildFile section */
@@ -22,8 +22,8 @@
 		DA831B2C1C4F2E010086AE8B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA831B2D1C4F2E010086AE8B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DA831B301C4F2E010086AE8B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		DA831B321C4F2E010086AE8B /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		DA831B331C4F2E010086AE8B /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		DA831B321C4F2E010086AE8B /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
+		DA831B331C4F2E010086AE8B /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		DA831B351C4F2E010086AE8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA831B381C4F2E010086AE8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA831B3A1C4F2E010086AE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,8 +63,8 @@
 				DA831B2D1C4F2E010086AE8B /* AppDelegate.m */,
 				DA047AC91C51C29900394C9B /* TimerManager.h */,
 				DA047ACA1C51C29900394C9B /* TimerManager.m */,
-				DA831B321C4F2E010086AE8B /* ViewController.h */,
-				DA831B331C4F2E010086AE8B /* ViewController.m */,
+				DA831B321C4F2E010086AE8B /* MasterViewController.h */,
+				DA831B331C4F2E010086AE8B /* MasterViewController.m */,
 				DA831B351C4F2E010086AE8B /* Assets.xcassets */,
 				DA831B371C4F2E010086AE8B /* Main.storyboard */,
 				DA831B3A1C4F2E010086AE8B /* Info.plist */,
@@ -150,7 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA831B341C4F2E010086AE8B /* ViewController.m in Sources */,
+				DA831B341C4F2E010086AE8B /* MasterViewController.m in Sources */,
 				DA047ACB1C51C29900394C9B /* TimerManager.m in Sources */,
 				DA831B311C4F2E010086AE8B /* main.m in Sources */,
 				DA831B2E1C4F2E010086AE8B /* AppDelegate.m in Sources */,
