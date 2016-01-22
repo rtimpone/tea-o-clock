@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA047ACB1C51C29900394C9B /* TimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA047ACA1C51C29900394C9B /* TimerManager.m */; };
 		DA831B2E1C4F2E010086AE8B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B2D1C4F2E010086AE8B /* AppDelegate.m */; };
 		DA831B311C4F2E010086AE8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B301C4F2E010086AE8B /* main.m */; };
 		DA831B341C4F2E010086AE8B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B331C4F2E010086AE8B /* ViewController.m */; };
@@ -15,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DA047AC91C51C29900394C9B /* TimerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerManager.h; sourceTree = "<group>"; };
+		DA047ACA1C51C29900394C9B /* TimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerManager.m; sourceTree = "<group>"; };
 		DA831B291C4F2E000086AE8B /* TeaOClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaOClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA831B2C1C4F2E010086AE8B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DA831B2D1C4F2E010086AE8B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -58,6 +61,8 @@
 			children = (
 				DA831B2C1C4F2E010086AE8B /* AppDelegate.h */,
 				DA831B2D1C4F2E010086AE8B /* AppDelegate.m */,
+				DA047AC91C51C29900394C9B /* TimerManager.h */,
+				DA047ACA1C51C29900394C9B /* TimerManager.m */,
 				DA831B321C4F2E010086AE8B /* ViewController.h */,
 				DA831B331C4F2E010086AE8B /* ViewController.m */,
 				DA831B351C4F2E010086AE8B /* Assets.xcassets */,
@@ -146,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA831B341C4F2E010086AE8B /* ViewController.m in Sources */,
+				DA047ACB1C51C29900394C9B /* TimerManager.m in Sources */,
 				DA831B311C4F2E010086AE8B /* main.m in Sources */,
 				DA831B2E1C4F2E010086AE8B /* AppDelegate.m in Sources */,
 			);

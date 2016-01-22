@@ -6,9 +6,10 @@
 //  Copyright © 2016 Rob Timpone. All rights reserved.
 //
 
+#import "TimerManager.h"
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <TimerManagerDelegate>
 
 @property (weak) IBOutlet NSTextField *minutesLabel;
 @property (weak) IBOutlet NSTextField *countdownLabel;
@@ -16,10 +17,7 @@
 @property (weak) IBOutlet NSButton *startButton;
 @property (weak) IBOutlet NSButton *stopButton;
 
-@property (nonatomic) NSInteger minutes;
-@property (nonatomic) NSInteger seconds;
-
-@property (strong) NSTimer *timer;
+@property (strong) IBOutlet TimerManager *timerManager;
 
 @end
 
@@ -28,48 +26,12 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
     CountdownStateIsStopped
 };
 
-#define DEFAULT_MINUTES 3
-
 @implementation ViewController
 
-- (void)viewDidLoad
+#pragma mark - Timer Manager Delegate
+
+- (void)timerManager: (TimerManager *)manager secondsRemainingDidChange: (NSInteger)secondsRemaining
 {
-    [super viewDidLoad];
-    self.minutes = DEFAULT_MINUTES;
-}
-
-#pragma mark - Actions
-
-- (IBAction)stepperAction: (NSStepper *)sender
-{
-    self.minutes = sender.integerValue;
-}
-
-- (IBAction)startAction: (id)sender
-{
-    [self updateUIForCountdownState: CountdownStateIsCountingDown];
-    
-    self.seconds = self.minutes * 60;
-    self.timer = [NSTimer scheduledTimerWithTimeInterval: 1 target: self selector: @selector(decrementSeconds) userInfo: nil repeats: YES];
-}
-
-- (IBAction)stopAction: (id)sender
-{
-    [self stopTimer];
-}
-
-#pragma mark - Setters
-
-- (void)setMinutes: (NSInteger)minutes
-{
-    _minutes = minutes;
-    self.minutesLabel.stringValue = [NSString stringWithFormat: @"%ld min", (long)minutes];
-}
-
-- (void)setSeconds: (NSInteger)seconds
-{
-    _seconds = seconds;
-    
     static NSDateComponentsFormatter *dcf;
     if (!dcf)
     {
@@ -77,32 +39,42 @@ typedef NS_ENUM(NSUInteger, CountdownState) {
         dcf.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorPad;
         dcf.allowedUnits = NSCalendarUnitMinute | NSCalendarUnitSecond;
     }
+
+    self.countdownLabel.stringValue = [dcf stringFromTimeInterval: secondsRemaining];
+}
+
+- (void)timerManagerTimerDidFinish: (TimerManager *)manager
+{
+    [self updateUIForCountdownState: CountdownStateIsStopped];
     
-    self.countdownLabel.stringValue = [dcf stringFromTimeInterval: seconds];
+    //bounce the dock icon until the app becomes active again
+    [[NSApplication sharedApplication] requestUserAttention: NSCriticalRequest];
+    
+    [self showUserNotification];
+}
+
+#pragma mark - Actions
+
+- (IBAction)stepperAction: (NSStepper *)sender
+{
+    NSInteger minutes = sender.integerValue;
+    self.timerManager.minutes = minutes;
+    self.minutesLabel.stringValue = [NSString stringWithFormat: @"%ld min", (long)minutes];
+}
+
+- (IBAction)startAction: (id)sender
+{
+    [self.timerManager startTimer];
+    [self updateUIForCountdownState: CountdownStateIsCountingDown];
+}
+
+- (IBAction)stopAction: (id)sender
+{
+    [self.timerManager stopTimer];
+    [self updateUIForCountdownState: CountdownStateIsStopped];
 }
 
 #pragma mark - Helpers
-
-- (void)decrementSeconds
-{
-    self.seconds = self.seconds - 1;
-    if (self.seconds == 0)
-    {
-        [self stopTimer];
-        
-        //bounce the dock icon until the app becomes active again
-        [[NSApplication sharedApplication] requestUserAttention: NSCriticalRequest];
-        
-        //show a standard popup notification to the user
-        [self showUserNotification];
-    }
-}
-
-- (void)stopTimer
-{
-    [self updateUIForCountdownState: CountdownStateIsStopped];
-    [self.timer invalidate];
-}
 
 - (void)updateUIForCountdownState: (CountdownState)countdownState
 {

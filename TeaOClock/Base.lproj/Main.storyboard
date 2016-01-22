@@ -667,7 +667,7 @@
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--View Controller-->
+        <!--Delegate-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" sceneMemberID="viewController">
@@ -753,9 +753,15 @@
                         <outlet property="startButton" destination="hOq-ek-Qrv" id="51C-Wg-7U4"/>
                         <outlet property="stepper" destination="GW0-fu-aju" id="sBy-0x-Lvf"/>
                         <outlet property="stopButton" destination="v52-EN-vOa" id="NO6-dA-LM1"/>
+                        <outlet property="timerManager" destination="qqB-NV-s3y" id="607-2R-7me"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="qqB-NV-s3y" customClass="TimerManager">
+                    <connections>
+                        <outlet property="delegate" destination="XfG-lQ-9wD" id="S4R-AE-Fgy"/>
+                    </connections>
+                </customObject>
             </objects>
             <point key="canvasLocation" x="75" y="655"/>
         </scene>
