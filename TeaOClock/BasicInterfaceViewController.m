@@ -32,20 +32,13 @@
     
     [self updateCountdownLabelForSeconds: seconds];
     [self updateMinutesLabelForMinutes: minutes];
-    
-    self.minutesLabel.active = YES;
-    self.countdownLabel.active = NO;
+    [self updateUIForTimerIsStopped: YES];
 }
 
 - (void)updateInterfaceForStateChanged: (TimerInterfaceState)interfaceState
 {
     BOOL isStopped = (interfaceState == TimerInterfaceStateIsStopped);
-    
-    self.startButton.enabled = isStopped;
-    self.stopButton.enabled = !isStopped;
-    self.stepper.enabled = isStopped;
-    self.minutesLabel.active = isStopped;
-    self.countdownLabel.active = !isStopped;
+    [self updateUIForTimerIsStopped: isStopped];
 }
 
 - (void)updateInterfaceForSecondsRemainingChanged: (NSInteger)secondsRemaining
@@ -90,6 +83,15 @@
     }
     
     self.countdownLabel.stringValue = [dcf stringFromTimeInterval: seconds];
+}
+
+- (void)updateUIForTimerIsStopped: (BOOL)isStopped
+{
+    self.startButton.enabled = isStopped;
+    self.stopButton.enabled = !isStopped;
+    self.stepper.enabled = isStopped;
+    self.minutesLabel.active = isStopped;
+    self.countdownLabel.active = !isStopped;
 }
 
 @end

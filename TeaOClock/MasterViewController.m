@@ -8,19 +8,20 @@
 
 #import "InterfaceViewController.h"
 #import "MasterViewController.h"
+#import "MenuItemManager.h"
 #import "NotificationManager.h"
 #import "TimerManager.h"
 #import "UserPreferencesManager.h"
 
-@interface MasterViewController () <InterfaceViewControllerDelegate, TimerManagerDelegate>
+@interface MasterViewController () <InterfaceViewControllerDelegate, MenuItemManagerDelegate, TimerManagerDelegate>
 
 @property (strong) NSViewController <InterfaceViewController> *interfaceController;
+@property (strong) IBOutlet MenuItemManager *menuItemManager;
 @property (strong) IBOutlet NotificationManager *notificationManager;
 @property (strong) IBOutlet TimerManager *timerManager;
 
 @end
 
-NSString * const kDefaultInterfaceControllerEmbedSegueIdentifier = @"DefaultInterfaceControllerEmbedSegueIdentifier";
 NSString * const kLightInterfaceStoryboardIdentifier = @"kLightInterfaceStoryboardIdentifier";
 NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboardIdentifier";
 
@@ -30,17 +31,8 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
 {
     [super viewDidLoad];
     
-    NSInteger minutes = [UserPreferencesManager userDefinedMinutes];
-    [self.interfaceController updateInterfaceForIntialStateWithMinutes: minutes];
-}
-
-- (void)prepareForSegue: (NSStoryboardSegue *)segue sender: (id)sender
-{
-    if ([segue.identifier isEqualToString: kDefaultInterfaceControllerEmbedSegueIdentifier])
-    {
-        self.interfaceController = segue.destinationController;
-        self.interfaceController.delegate = self;
-    }
+    InterfaceType lastInterfaceUsed = [UserPreferencesManager lastInterfaceTypeUsed];
+    [self displayInterfaceForInterfaceType: lastInterfaceUsed];
 }
 
 #pragma mark - Interface Controller Delegate
@@ -63,6 +55,14 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
     [UserPreferencesManager setUserDefintedMinutes: minutes];
 }
 
+#pragma mark - Menu Item Manager Delegate
+
+- (void)menuItemManager: (MenuItemManager *)manager didSelectInterfaceType: (InterfaceType)type
+{
+    [UserPreferencesManager setLastInterfaceTypeUsed: type];
+    [self displayInterfaceForInterfaceType: type];
+}
+
 #pragma mark - Timer Manager Delegate
 
 - (void)timerManager: (TimerManager *)manager secondsRemainingDidChange: (NSInteger)secondsRemaining
@@ -73,29 +73,25 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
 - (void)timerManagerTimerDidFinish: (TimerManager *)manager
 {
     [self.interfaceController updateInterfaceForStateChanged: TimerInterfaceStateIsStopped];
-    
     [self.notificationManager bounceDockBarIcon];
     [self.notificationManager showTimerFinishedUserNotification];
 }
 
-#pragma mark - Menu Actions
+#pragma mark - Actions
 
-- (IBAction)lightAction: (NSMenuItem *)sender
+//the manu item manager isn't in the responer chain and can't link its actions to the menu items directly
+- (IBAction)menuItemAction: (NSMenuItem *)sender
 {
-    [self selectMenuItem: sender];
-    [self displayInterfaceWithIdentifier: kLightInterfaceStoryboardIdentifier];
-}
-
-- (IBAction)darkAction: (NSMenuItem *)sender
-{
-    [self selectMenuItem: sender];
-    [self displayInterfaceWithIdentifier: kDarkInterfaceStoryboardIdentifier];
+    [self.timerManager stopTimer];
+    [self.menuItemManager handleSelectedMenuItem: sender];
 }
 
 #pragma mark - Helpers
 
-- (void)displayInterfaceWithIdentifier: (NSString *)identifier
+- (void)displayInterfaceForInterfaceType: (InterfaceType)type
 {
+    NSString *identifier = [self storyboardIdentifierForInterfaceType: type];
+    
     [self.interfaceController.view removeFromSuperview];
     [self.interfaceController removeFromParentViewController];
     
@@ -112,13 +108,18 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
     [vc updateInterfaceForIntialStateWithMinutes: minutes];
 }
 
-- (void)selectMenuItem: (NSMenuItem *)selectedItem
+- (NSString *)storyboardIdentifierForInterfaceType: (InterfaceType)type
 {
-    NSMenu *menu = (NSMenu *)[[[[NSApplication sharedApplication] mainMenu] itemAtIndex: 1] submenu];
-    for (NSMenuItem *item in menu.itemArray)
+    if (type == InterfaceTypeLight)
     {
-        item.state = (item == selectedItem);
+        return kLightInterfaceStoryboardIdentifier;
     }
+    else if (type == InterfaceTypeDark)
+    {
+        return kDarkInterfaceStoryboardIdentifier;
+    }
+    
+    return nil;
 }
 
 @end

@@ -17,6 +17,7 @@
 		DA831B391C4F2E010086AE8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA831B371C4F2E010086AE8B /* Main.storyboard */; };
 		DACDCD351C66713100DAB3D5 /* UserPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DACDCD341C66713100DAB3D5 /* UserPreferencesManager.m */; };
 		DACDCD381C66758700DAB3D5 /* InspectableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DACDCD371C66758700DAB3D5 /* InspectableTextField.m */; };
+		DACDCD3C1C667BD900DAB3D5 /* MenuItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DACDCD3B1C667BD900DAB3D5 /* MenuItemManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,9 @@
 		DACDCD341C66713100DAB3D5 /* UserPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferencesManager.m; sourceTree = "<group>"; };
 		DACDCD361C66758700DAB3D5 /* InspectableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableTextField.h; sourceTree = "<group>"; };
 		DACDCD371C66758700DAB3D5 /* InspectableTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableTextField.m; sourceTree = "<group>"; };
+		DACDCD3A1C667BD900DAB3D5 /* MenuItemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuItemManager.h; sourceTree = "<group>"; };
+		DACDCD3B1C667BD900DAB3D5 /* MenuItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuItemManager.m; sourceTree = "<group>"; };
+		DACDCD3D1C667E7800DAB3D5 /* SharedConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SharedConstants.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,7 @@
 		DA831B2B1C4F2E000086AE8B /* TeaOClock */ = {
 			isa = PBXGroup;
 			children = (
+				DACDCD3E1C667E8100DAB3D5 /* Constants */,
 				DACDCD321C666DB200DAB3D5 /* Controllers */,
 				DACDCD311C666DAC00DAB3D5 /* Protocols */,
 				DACDCD301C666DA200DAB3D5 /* Managers */,
@@ -97,6 +102,8 @@
 		DACDCD301C666DA200DAB3D5 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				DACDCD3A1C667BD900DAB3D5 /* MenuItemManager.h */,
+				DACDCD3B1C667BD900DAB3D5 /* MenuItemManager.m */,
 				DA047ACC1C51CCA300394C9B /* NotificationManager.h */,
 				DA047ACD1C51CCA300394C9B /* NotificationManager.m */,
 				DA047AC91C51C29900394C9B /* TimerManager.h */,
@@ -133,6 +140,14 @@
 				DACDCD371C66758700DAB3D5 /* InspectableTextField.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		DACDCD3E1C667E8100DAB3D5 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				DACDCD3D1C667E7800DAB3D5 /* SharedConstants.h */,
+			);
+			name = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +224,7 @@
 				DA047ACB1C51C29900394C9B /* TimerManager.m in Sources */,
 				DA047AD11C51CEA400394C9B /* BasicInterfaceViewController.m in Sources */,
 				DACDCD381C66758700DAB3D5 /* InspectableTextField.m in Sources */,
+				DACDCD3C1C667BD900DAB3D5 /* MenuItemManager.m in Sources */,
 				DA831B311C4F2E010086AE8B /* main.m in Sources */,
 				DA047ACE1C51CCA300394C9B /* NotificationManager.m in Sources */,
 				DA831B2E1C4F2E010086AE8B /* AppDelegate.m in Sources */,

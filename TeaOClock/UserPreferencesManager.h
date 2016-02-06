@@ -7,10 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SharedConstants.h"
 
 @interface UserPreferencesManager : NSObject
 
 + (void)setUserDefintedMinutes: (NSInteger)minutes;
 + (NSInteger)userDefinedMinutes;
+
++ (void)setLastInterfaceTypeUsed: (InterfaceType)type;
++ (InterfaceType)lastInterfaceTypeUsed;
 
 @end

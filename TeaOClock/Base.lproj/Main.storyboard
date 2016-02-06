@@ -56,12 +56,12 @@
                                     <items>
                                         <menuItem title="Light" keyEquivalent="1" id="GJR-L4-i5E">
                                             <connections>
-                                                <action selector="lightAction:" target="Ady-hI-5gd" id="umg-4w-w5H"/>
+                                                <action selector="menuItemAction:" target="Ady-hI-5gd" id="OeU-nS-AaL"/>
                                             </connections>
                                         </menuItem>
                                         <menuItem title="Dark" state="on" keyEquivalent="2" id="T3v-kg-84E">
                                             <connections>
-                                                <action selector="darkAction:" target="Ady-hI-5gd" id="wT2-dg-Lep"/>
+                                                <action selector="menuItemAction:" target="Ady-hI-5gd" id="z8f-Wu-DaG"/>
                                             </connections>
                                         </menuItem>
                                     </items>
@@ -213,27 +213,19 @@
                     <view key="view" id="4gj-U6-YEH">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Ru9-Mi-hm8">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                <connections>
-                                    <segue destination="XfG-lQ-9wD" kind="embed" identifier="DefaultInterfaceControllerEmbedSegueIdentifier" id="YMj-4g-c1g"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Ru9-Mi-hm8" secondAttribute="trailing" id="JBe-eV-kEg"/>
-                            <constraint firstAttribute="bottom" secondItem="Ru9-Mi-hm8" secondAttribute="bottom" id="OEU-xy-5ky"/>
-                            <constraint firstItem="Ru9-Mi-hm8" firstAttribute="top" secondItem="4gj-U6-YEH" secondAttribute="top" id="iz6-kp-0Hu"/>
-                            <constraint firstItem="Ru9-Mi-hm8" firstAttribute="leading" secondItem="4gj-U6-YEH" secondAttribute="leading" id="nSE-53-RJB"/>
-                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="menuItemManager" destination="0Te-4T-Vee" id="iI1-y2-b2b"/>
                         <outlet property="notificationManager" destination="NbS-Zw-bP2" id="MAM-KJ-3pw"/>
                         <outlet property="timerManager" destination="qqB-NV-s3y" id="DzL-7L-a97"/>
                     </connections>
                 </viewController>
                 <customObject id="tNJ-sc-pYU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="0Te-4T-Vee" customClass="MenuItemManager">
+                    <connections>
+                        <outlet property="delegate" destination="dGu-Dq-7gD" id="jaa-cO-rHM"/>
+                    </connections>
+                </customObject>
                 <customObject id="NbS-Zw-bP2" customClass="NotificationManager"/>
                 <customObject id="qqB-NV-s3y" customClass="TimerManager">
                     <connections>
