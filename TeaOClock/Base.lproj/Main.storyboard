@@ -54,14 +54,12 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Interface" id="bib-Uj-vzu">
                                     <items>
-                                        <menuItem title="Light" id="GJR-L4-i5E">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="Light" keyEquivalent="1" id="GJR-L4-i5E">
                                             <connections>
                                                 <action selector="lightAction:" target="Ady-hI-5gd" id="umg-4w-w5H"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Dark" state="on" id="T3v-kg-84E">
-                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                        <menuItem title="Dark" state="on" keyEquivalent="2" id="T3v-kg-84E">
                                             <connections>
                                                 <action selector="darkAction:" target="Ady-hI-5gd" id="wT2-dg-Lep"/>
                                             </connections>
