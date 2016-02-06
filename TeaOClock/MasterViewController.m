@@ -79,10 +79,11 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
 
 #pragma mark - Actions
 
-//the manu item manager isn't in the responer chain and can't link its actions to the menu items directly
 - (IBAction)menuItemAction: (NSMenuItem *)sender
 {
     [self.timerManager stopTimer];
+    
+    //the manu item manager isn't in the responer chain and can't link its actions to the menu items directly
     [self.menuItemManager handleSelectedMenuItem: sender];
 }
 
