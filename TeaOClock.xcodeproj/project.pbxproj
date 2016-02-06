@@ -66,17 +66,11 @@
 		DA831B2B1C4F2E000086AE8B /* TeaOClock */ = {
 			isa = PBXGroup;
 			children = (
+				DACDCD321C666DB200DAB3D5 /* Controllers */,
+				DACDCD311C666DAC00DAB3D5 /* Protocols */,
+				DACDCD301C666DA200DAB3D5 /* Managers */,
 				DA831B2C1C4F2E010086AE8B /* AppDelegate.h */,
 				DA831B2D1C4F2E010086AE8B /* AppDelegate.m */,
-				DA047ACF1C51CEA400394C9B /* BasicInterfaceViewController.h */,
-				DA047AD01C51CEA400394C9B /* BasicInterfaceViewController.m */,
-				DA047AD21C51CEC300394C9B /* InterfaceViewController.h */,
-				DA047ACC1C51CCA300394C9B /* NotificationManager.h */,
-				DA047ACD1C51CCA300394C9B /* NotificationManager.m */,
-				DA047AC91C51C29900394C9B /* TimerManager.h */,
-				DA047ACA1C51C29900394C9B /* TimerManager.m */,
-				DA831B321C4F2E010086AE8B /* MasterViewController.h */,
-				DA831B331C4F2E010086AE8B /* MasterViewController.m */,
 				DA831B351C4F2E010086AE8B /* Assets.xcassets */,
 				DA831B371C4F2E010086AE8B /* Main.storyboard */,
 				DA831B3A1C4F2E010086AE8B /* Info.plist */,
@@ -91,6 +85,36 @@
 				DA831B301C4F2E010086AE8B /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DACDCD301C666DA200DAB3D5 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DA047ACC1C51CCA300394C9B /* NotificationManager.h */,
+				DA047ACD1C51CCA300394C9B /* NotificationManager.m */,
+				DA047AC91C51C29900394C9B /* TimerManager.h */,
+				DA047ACA1C51C29900394C9B /* TimerManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
+		DACDCD311C666DAC00DAB3D5 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DA047AD21C51CEC300394C9B /* InterfaceViewController.h */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		DACDCD321C666DB200DAB3D5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DA047ACF1C51CEA400394C9B /* BasicInterfaceViewController.h */,
+				DA047AD01C51CEA400394C9B /* BasicInterfaceViewController.m */,
+				DA831B321C4F2E010086AE8B /* MasterViewController.h */,
+				DA831B331C4F2E010086AE8B /* MasterViewController.m */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
