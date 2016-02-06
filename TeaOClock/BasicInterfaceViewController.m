@@ -7,11 +7,12 @@
 //
 
 #import "BasicInterfaceViewController.h"
+#import "InspectableTextField.h"
 
 @interface BasicInterfaceViewController ()
 
-@property (weak) IBOutlet NSTextField *minutesLabel;
-@property (weak) IBOutlet NSTextField *countdownLabel;
+@property (weak) IBOutlet InspectableTextField *minutesLabel;
+@property (weak) IBOutlet InspectableTextField *countdownLabel;
 @property (weak) IBOutlet NSStepper *stepper;
 @property (weak) IBOutlet NSButton *startButton;
 @property (weak) IBOutlet NSButton *stopButton;
@@ -31,6 +32,9 @@
     
     [self updateCountdownLabelForSeconds: seconds];
     [self updateMinutesLabelForMinutes: minutes];
+    
+    self.minutesLabel.active = YES;
+    self.countdownLabel.active = NO;
 }
 
 - (void)updateInterfaceForStateChanged: (TimerInterfaceState)interfaceState
@@ -40,8 +44,8 @@
     self.startButton.enabled = isStopped;
     self.stopButton.enabled = !isStopped;
     self.stepper.enabled = isStopped;
-    self.minutesLabel.textColor = isStopped ? [NSColor whiteColor] : [NSColor grayColor];
-    self.countdownLabel.textColor = isStopped ? [NSColor grayColor] : [NSColor whiteColor];
+    self.minutesLabel.active = isStopped;
+    self.countdownLabel.active = !isStopped;
 }
 
 - (void)updateInterfaceForSecondsRemainingChanged: (NSInteger)secondsRemaining

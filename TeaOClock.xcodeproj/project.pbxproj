@@ -16,6 +16,7 @@
 		DA831B361C4F2E010086AE8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA831B351C4F2E010086AE8B /* Assets.xcassets */; };
 		DA831B391C4F2E010086AE8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA831B371C4F2E010086AE8B /* Main.storyboard */; };
 		DACDCD351C66713100DAB3D5 /* UserPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DACDCD341C66713100DAB3D5 /* UserPreferencesManager.m */; };
+		DACDCD381C66758700DAB3D5 /* InspectableTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = DACDCD371C66758700DAB3D5 /* InspectableTextField.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		DA831B3A1C4F2E010086AE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DACDCD331C66713100DAB3D5 /* UserPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferencesManager.h; sourceTree = "<group>"; };
 		DACDCD341C66713100DAB3D5 /* UserPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferencesManager.m; sourceTree = "<group>"; };
+		DACDCD361C66758700DAB3D5 /* InspectableTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InspectableTextField.h; sourceTree = "<group>"; };
+		DACDCD371C66758700DAB3D5 /* InspectableTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InspectableTextField.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,7 @@
 				DACDCD321C666DB200DAB3D5 /* Controllers */,
 				DACDCD311C666DAC00DAB3D5 /* Protocols */,
 				DACDCD301C666DA200DAB3D5 /* Managers */,
+				DACDCD391C66758A00DAB3D5 /* Views */,
 				DA831B2C1C4F2E010086AE8B /* AppDelegate.h */,
 				DA831B2D1C4F2E010086AE8B /* AppDelegate.m */,
 				DA831B351C4F2E010086AE8B /* Assets.xcassets */,
@@ -120,6 +124,15 @@
 				DA831B331C4F2E010086AE8B /* MasterViewController.m */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		DACDCD391C66758A00DAB3D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DACDCD361C66758700DAB3D5 /* InspectableTextField.h */,
+				DACDCD371C66758700DAB3D5 /* InspectableTextField.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +208,7 @@
 				DACDCD351C66713100DAB3D5 /* UserPreferencesManager.m in Sources */,
 				DA047ACB1C51C29900394C9B /* TimerManager.m in Sources */,
 				DA047AD11C51CEA400394C9B /* BasicInterfaceViewController.m in Sources */,
+				DACDCD381C66758700DAB3D5 /* InspectableTextField.m in Sources */,
 				DA831B311C4F2E010086AE8B /* main.m in Sources */,
 				DA047ACE1C51CCA300394C9B /* NotificationManager.m in Sources */,
 				DA831B2E1C4F2E010086AE8B /* AppDelegate.m in Sources */,

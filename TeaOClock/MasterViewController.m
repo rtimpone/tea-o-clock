@@ -105,11 +105,11 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
     self.interfaceController = vc;
     vc.delegate = self;
     
-    NSInteger minutes = [UserPreferencesManager userDefinedMinutes];
-    [vc updateInterfaceForIntialStateWithMinutes: minutes];
-    
     [self.view addSubview: vc.view];
     [self addChildViewController: vc];
+    
+    NSInteger minutes = [UserPreferencesManager userDefinedMinutes];
+    [vc updateInterfaceForIntialStateWithMinutes: minutes];
 }
 
 - (void)selectMenuItem: (NSMenuItem *)selectedItem
