@@ -1,5 +1,5 @@
 //
-//  TOCNotificationManager.h
+//  NotificationManager.h
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/21/16.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TOCNotificationManager : NSObject
+@interface NotificationManager : NSObject
 
 /** Bounce the dock icon until the app becomes active again */
 - (void)bounceDockBarIcon;

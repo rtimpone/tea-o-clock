@@ -1,5 +1,5 @@
 //
-//  TOCInterfaceViewController.h
+//  InterfaceViewController.h
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/21/16.
@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, TimerInterfaceState) {
     TimerInterfaceStateIsStopped
 };
 
-@protocol TOCInterfaceViewControllerDelegate <NSObject>
+@protocol InterfaceViewControllerDelegate <NSObject>
 
 /** Tells the delegate to start the timer */
 - (void)interfaceControllerRequestsStartTimer: (id)controller;
@@ -26,9 +26,9 @@ typedef NS_ENUM(NSUInteger, TimerInterfaceState) {
 
 @end
 
-@protocol TOCInterfaceViewController <NSObject>
+@protocol InterfaceViewController <NSObject>
 
-@property (weak) id <TOCInterfaceViewControllerDelegate> delegate;
+@property (weak) id <InterfaceViewControllerDelegate> delegate;
 
 /** Updates the interface for a state change, i.e. the timer started or stopped */
 - (void)updateInterfaceForStateChanged: (TimerInterfaceState)interfaceState;

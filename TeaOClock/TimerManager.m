@@ -1,5 +1,5 @@
 //
-//  TOCTimerManager.m
+//  TimerManager.m
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/21/16.
@@ -8,9 +8,9 @@
 
 @import AppKit;
 
-#import "TOCTimerManager.h"
+#import "TimerManager.h"
 
-@interface TOCTimerManager ()
+@interface TimerManager ()
 
 @property (nonatomic) NSInteger initialSeconds;
 @property (nonatomic) NSInteger secondsRemaining;
@@ -20,7 +20,7 @@
 
 #define DEFAULT_MINUTES 3
 
-@implementation TOCTimerManager
+@implementation TimerManager
 
 - (void)awakeFromNib
 {

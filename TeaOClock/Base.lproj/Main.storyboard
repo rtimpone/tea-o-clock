@@ -75,7 +75,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="TOCAppDelegate"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75.5" y="-108"/>
@@ -103,7 +103,7 @@
         <!--Dark Interface View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController title="Dark Interface View Controller" storyboardIdentifier="kDarkInterfaceStoryboardIdentifier" id="XfG-lQ-9wD" customClass="TOCBasicInterfaceViewController" sceneMemberID="viewController">
+                <viewController title="Dark Interface View Controller" storyboardIdentifier="kDarkInterfaceStoryboardIdentifier" id="XfG-lQ-9wD" customClass="BasicInterfaceViewController" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -195,7 +195,7 @@
         <!--Delegate-->
         <scene sceneID="Y8b-LO-rh9">
             <objects>
-                <viewController title="Master View Controller" id="dGu-Dq-7gD" customClass="TOCMasterViewController" sceneMemberID="viewController">
+                <viewController title="Master View Controller" id="dGu-Dq-7gD" customClass="MasterViewController" sceneMemberID="viewController">
                     <view key="view" id="4gj-U6-YEH">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -203,7 +203,7 @@
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Ru9-Mi-hm8">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                                 <connections>
-                                    <segue destination="XfG-lQ-9wD" kind="embed" identifier="DefaultInterfaceControllerEmbedSegue" id="YMj-4g-c1g"/>
+                                    <segue destination="XfG-lQ-9wD" kind="embed" identifier="DefaultInterfaceControllerEmbedSegueIdentifier" id="YMj-4g-c1g"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -220,8 +220,8 @@
                     </connections>
                 </viewController>
                 <customObject id="tNJ-sc-pYU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <customObject id="NbS-Zw-bP2" customClass="TOCNotificationManager"/>
-                <customObject id="qqB-NV-s3y" customClass="TOCTimerManager">
+                <customObject id="NbS-Zw-bP2" customClass="NotificationManager"/>
+                <customObject id="qqB-NV-s3y" customClass="TimerManager">
                     <connections>
                         <outlet property="delegate" destination="dGu-Dq-7gD" id="j0U-H5-fsF"/>
                     </connections>
@@ -232,7 +232,7 @@
         <!--Light Interface View Controller-->
         <scene sceneID="ZGp-75-GFt">
             <objects>
-                <viewController title="Light Interface View Controller" storyboardIdentifier="kLightInterfaceStoryboardIdentifier" id="5LH-dM-5vY" customClass="TOCBasicInterfaceViewController" sceneMemberID="viewController">
+                <viewController title="Light Interface View Controller" storyboardIdentifier="kLightInterfaceStoryboardIdentifier" id="5LH-dM-5vY" customClass="BasicInterfaceViewController" sceneMemberID="viewController">
                     <view key="view" id="iuk-7L-FXz">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>

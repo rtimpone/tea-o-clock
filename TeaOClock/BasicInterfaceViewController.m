@@ -1,14 +1,14 @@
 //
-//  TOCBasicInterfaceViewController.m
+//  BasicInterfaceViewController.m
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/21/16.
 //  Copyright © 2016 Rob Timpone. All rights reserved.
 //
 
-#import "TOCBasicInterfaceViewController.h"
+#import "BasicInterfaceViewController.h"
 
-@interface TOCBasicInterfaceViewController ()
+@interface BasicInterfaceViewController ()
 
 @property (weak) IBOutlet NSTextField *minutesLabel;
 @property (weak) IBOutlet NSTextField *countdownLabel;
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation TOCBasicInterfaceViewController
+@implementation BasicInterfaceViewController
 
 @synthesize delegate = _delegate;
 

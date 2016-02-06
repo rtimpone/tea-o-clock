@@ -1,5 +1,5 @@
 //
-//  TOCNotificationManager.m
+//  NotificationManager.m
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/21/16.
@@ -8,9 +8,9 @@
 
 @import Cocoa;
 
-#import "TOCNotificationManager.h"
+#import "NotificationManager.h"
 
-@implementation TOCNotificationManager
+@implementation NotificationManager
 
 - (void)bounceDockBarIcon
 {

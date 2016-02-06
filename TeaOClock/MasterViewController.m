@@ -1,21 +1,21 @@
 //
-//  TOCMasterViewController.m
+//  MasterViewController.m
 //  TeaOClock
 //
 //  Created by Rob Timpone on 1/19/16.
 //  Copyright © 2016 Rob Timpone. All rights reserved.
 //
 
-#import "TOCInterfaceViewController.h"
-#import "TOCNotificationManager.h"
-#import "TOCTimerManager.h"
-#import "TOCMasterViewController.h"
+#import "InterfaceViewController.h"
+#import "MasterViewController.h"
+#import "NotificationManager.h"
+#import "TimerManager.h"
 
-@interface TOCMasterViewController () <TOCInterfaceViewControllerDelegate, TOCTimerManagerDelegate>
+@interface MasterViewController () <InterfaceViewControllerDelegate, TimerManagerDelegate>
 
-@property (strong) NSViewController <TOCInterfaceViewController> *interfaceController;
-@property (strong) IBOutlet TOCNotificationManager *notificationManager;
-@property (strong) IBOutlet TOCTimerManager *timerManager;
+@property (strong) NSViewController <InterfaceViewController> *interfaceController;
+@property (strong) IBOutlet NotificationManager *notificationManager;
+@property (strong) IBOutlet TimerManager *timerManager;
 
 @end
 
@@ -23,7 +23,7 @@ NSString * const kDefaultInterfaceControllerEmbedSegueIdentifier = @"DefaultInte
 NSString * const kLightInterfaceStoryboardIdentifier = @"kLightInterfaceStoryboardIdentifier";
 NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboardIdentifier";
 
-@implementation TOCMasterViewController
+@implementation MasterViewController
 
 - (void)prepareForSegue: (NSStoryboardSegue *)segue sender: (id)sender
 {
@@ -55,12 +55,12 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
 
 #pragma mark - Timer Manager Delegate
 
-- (void)timerManager: (TOCTimerManager *)manager secondsRemainingDidChange: (NSInteger)secondsRemaining
+- (void)timerManager: (TimerManager *)manager secondsRemainingDidChange: (NSInteger)secondsRemaining
 {
     [self.interfaceController updateInterfaceForSecondsRemainingChanged: secondsRemaining];
 }
 
-- (void)timerManagerTimerDidFinish: (TOCTimerManager *)manager
+- (void)timerManagerTimerDidFinish: (TimerManager *)manager
 {
     [self.interfaceController updateInterfaceForStateChanged: TimerInterfaceStateIsStopped];
     
@@ -90,7 +90,7 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
     [self.interfaceController removeFromParentViewController];
     
     NSStoryboard *storyboard = [NSStoryboard storyboardWithName: @"Main" bundle: nil];
-    NSViewController <TOCInterfaceViewController> *vc = [storyboard instantiateControllerWithIdentifier: identifier];
+    NSViewController <InterfaceViewController> *vc = [storyboard instantiateControllerWithIdentifier: identifier];
     
     self.interfaceController = vc;
     vc.delegate = self;
