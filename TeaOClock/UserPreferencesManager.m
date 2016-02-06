@@ -9,23 +9,47 @@
 #import "UserPreferencesManager.h"
 
 #define DEFAULT_MINUTES 3
+#define DEFAULT_INTERFACE InterfaceTypeDark
 
 NSString * const kUserDefinedMinutes = @"userDefinedMinutes";
+NSString * const kUserDefinedInterfaceType = @"userDefinedInterfaceType";
 
 @implementation UserPreferencesManager
 
 + (void)setUserDefintedMinutes: (NSInteger)minutes
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject: @(minutes) forKey: kUserDefinedMinutes];
-    [defaults synchronize];
+    [self setInteger: minutes forKey: kUserDefinedMinutes];
 }
 
 + (NSInteger)userDefinedMinutes
 {
+    return [self getIntegerForKey: kUserDefinedMinutes withDefaultValue: DEFAULT_MINUTES];
+}
+
++ (void)setUserDefinedInterfaceType: (InterfaceType)type
+{
+    [self setInteger: type forKey: kUserDefinedInterfaceType];
+}
+
++ (InterfaceType)userDefinedInterfaceType
+{
+    return [self getIntegerForKey: kUserDefinedInterfaceType withDefaultValue: DEFAULT_INTERFACE];
+}
+
+#pragma mark - Helpers
+
++ (void)setInteger: (NSInteger)integer forKey: (NSString *)key
+{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *userDefinedMinutesNumber = [defaults objectForKey: kUserDefinedMinutes];
-    return userDefinedMinutesNumber ? [userDefinedMinutesNumber integerValue] : DEFAULT_MINUTES;
+    [defaults setObject: @(integer) forKey: key];
+    [defaults synchronize];
+}
+
++ (NSInteger)getIntegerForKey: (NSString *)key withDefaultValue: (NSInteger)defaultValue
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *object = [defaults objectForKey: key];
+    return object ? [object integerValue] : defaultValue;
 }
 
 @end
