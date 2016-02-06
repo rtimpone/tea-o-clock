@@ -13,19 +13,21 @@
 
 @interface TOCMasterViewController () <TOCInterfaceViewControllerDelegate, TOCTimerManagerDelegate>
 
-@property (strong) id <TOCInterfaceViewController> interfaceController;
+@property (strong) NSViewController <TOCInterfaceViewController> *interfaceController;
 @property (strong) IBOutlet TOCNotificationManager *notificationManager;
 @property (strong) IBOutlet TOCTimerManager *timerManager;
 
 @end
 
-NSString * const kBasicInterviewEmbedSegue = @"BasicInterviewEmbedSegue";
+NSString * const kDefaultInterfaceControllerEmbedSegueIdentifier = @"DefaultInterfaceControllerEmbedSegueIdentifier";
+NSString * const kLightInterfaceStoryboardIdentifier = @"kLightInterfaceStoryboardIdentifier";
+NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboardIdentifier";
 
 @implementation TOCMasterViewController
 
 - (void)prepareForSegue: (NSStoryboardSegue *)segue sender: (id)sender
 {
-    if ([segue.identifier isEqualToString: kBasicInterviewEmbedSegue])
+    if ([segue.identifier isEqualToString: kDefaultInterfaceControllerEmbedSegueIdentifier])
     {
         self.interfaceController = segue.destinationController;
         self.interfaceController.delegate = self;
@@ -64,6 +66,46 @@ NSString * const kBasicInterviewEmbedSegue = @"BasicInterviewEmbedSegue";
     
     [self.notificationManager bounceDockBarIcon];
     [self.notificationManager showTimerFinishedUserNotification];
+}
+
+#pragma mark - Menu Actions
+
+- (IBAction)lightAction: (NSMenuItem *)sender
+{
+    [self selectMenuItem: sender];
+    [self displayInterfaceWithIdentifier: kLightInterfaceStoryboardIdentifier];
+}
+
+- (IBAction)darkAction: (NSMenuItem *)sender
+{
+    [self selectMenuItem: sender];
+    [self displayInterfaceWithIdentifier: kDarkInterfaceStoryboardIdentifier];
+}
+
+#pragma mark - Helpers
+
+- (void)displayInterfaceWithIdentifier: (NSString *)identifier
+{
+    [self.interfaceController.view removeFromSuperview];
+    [self.interfaceController removeFromParentViewController];
+    
+    NSStoryboard *storyboard = [NSStoryboard storyboardWithName: @"Main" bundle: nil];
+    NSViewController <TOCInterfaceViewController> *vc = [storyboard instantiateControllerWithIdentifier: identifier];
+    
+    self.interfaceController = vc;
+    vc.delegate = self;
+    
+    [self.view addSubview: vc.view];
+    [self addChildViewController: vc];
+}
+
+- (void)selectMenuItem: (NSMenuItem *)selectedItem
+{
+    NSMenu *menu = (NSMenu *)[[[[NSApplication sharedApplication] mainMenu] itemAtIndex: 1] submenu];
+    for (NSMenuItem *item in menu.itemArray)
+    {
+        item.state = (item == selectedItem);
+    }
 }
 
 @end
