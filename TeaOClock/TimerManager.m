@@ -9,6 +9,7 @@
 @import AppKit;
 
 #import "TimerManager.h"
+#import "UserPreferencesManager.h"
 
 @interface TimerManager ()
 
@@ -18,15 +19,15 @@
 
 @end
 
-#define DEFAULT_MINUTES 3
-
 @implementation TimerManager
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    self.initialSeconds = DEFAULT_MINUTES * 60;
-    self.secondsRemaining = DEFAULT_MINUTES * 60;
+    
+    NSInteger userDefinedMinutes = [UserPreferencesManager userDefinedMinutes];
+    self.initialSeconds = userDefinedMinutes * 60;
+    self.secondsRemaining = userDefinedMinutes * 60;
 }
 
 - (void)startTimer

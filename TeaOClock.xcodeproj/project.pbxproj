@@ -15,6 +15,7 @@
 		DA831B341C4F2E010086AE8B /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B331C4F2E010086AE8B /* MasterViewController.m */; };
 		DA831B361C4F2E010086AE8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA831B351C4F2E010086AE8B /* Assets.xcassets */; };
 		DA831B391C4F2E010086AE8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA831B371C4F2E010086AE8B /* Main.storyboard */; };
+		DACDCD351C66713100DAB3D5 /* UserPreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DACDCD341C66713100DAB3D5 /* UserPreferencesManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,8 @@
 		DA831B351C4F2E010086AE8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA831B381C4F2E010086AE8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA831B3A1C4F2E010086AE8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DACDCD331C66713100DAB3D5 /* UserPreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPreferencesManager.h; sourceTree = "<group>"; };
+		DACDCD341C66713100DAB3D5 /* UserPreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPreferencesManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 				DA047ACD1C51CCA300394C9B /* NotificationManager.m */,
 				DA047AC91C51C29900394C9B /* TimerManager.h */,
 				DA047ACA1C51C29900394C9B /* TimerManager.m */,
+				DACDCD331C66713100DAB3D5 /* UserPreferencesManager.h */,
+				DACDCD341C66713100DAB3D5 /* UserPreferencesManager.m */,
 			);
 			name = Managers;
 			sourceTree = "<group>";
@@ -187,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA831B341C4F2E010086AE8B /* MasterViewController.m in Sources */,
+				DACDCD351C66713100DAB3D5 /* UserPreferencesManager.m in Sources */,
 				DA047ACB1C51C29900394C9B /* TimerManager.m in Sources */,
 				DA047AD11C51CEA400394C9B /* BasicInterfaceViewController.m in Sources */,
 				DA831B311C4F2E010086AE8B /* main.m in Sources */,

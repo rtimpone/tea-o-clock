@@ -24,6 +24,15 @@
 
 #pragma mark - Interface View Controller
 
+- (void)updateInterfaceForIntialStateWithMinutes: (NSInteger)minutes
+{
+    NSInteger seconds = minutes * 60;
+    self.stepper.integerValue = minutes;
+    
+    [self updateCountdownLabelForSeconds: seconds];
+    [self updateMinutesLabelForMinutes: minutes];
+}
+
 - (void)updateInterfaceForStateChanged: (TimerInterfaceState)interfaceState
 {
     BOOL isStopped = (interfaceState == TimerInterfaceStateIsStopped);
@@ -37,15 +46,7 @@
 
 - (void)updateInterfaceForSecondsRemainingChanged: (NSInteger)secondsRemaining
 {
-    static NSDateComponentsFormatter *dcf;
-    if (!dcf)
-    {
-        dcf = [NSDateComponentsFormatter new];
-        dcf.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorPad;
-        dcf.allowedUnits = NSCalendarUnitMinute | NSCalendarUnitSecond;
-    }
-    
-    self.countdownLabel.stringValue = [dcf stringFromTimeInterval: secondsRemaining];
+    [self updateCountdownLabelForSeconds: secondsRemaining];
 }
 
 #pragma mark - Actions
@@ -54,7 +55,7 @@
 {
     NSInteger minutes = sender.integerValue;
     [self.delegate interfaceController: self requestsSetInitialMinutes: minutes];
-    self.minutesLabel.stringValue = [NSString stringWithFormat: @"%ld min", (long)minutes];
+    [self updateMinutesLabelForMinutes: minutes];
 }
 
 - (IBAction)startButtonAction: (id)sender
@@ -65,6 +66,26 @@
 - (IBAction)stopButtonAction: (id)sender
 {
     [self.delegate interfaceControllerRequestsStopTimer: self];
+}
+
+#pragma mark - Helpers
+
+- (void)updateMinutesLabelForMinutes: (NSInteger)minutes
+{
+    self.minutesLabel.stringValue = [NSString stringWithFormat: @"%ld min", (long)minutes];
+}
+
+- (void)updateCountdownLabelForSeconds: (NSInteger)seconds
+{
+    static NSDateComponentsFormatter *dcf;
+    if (!dcf)
+    {
+        dcf = [NSDateComponentsFormatter new];
+        dcf.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorPad;
+        dcf.allowedUnits = NSCalendarUnitMinute | NSCalendarUnitSecond;
+    }
+    
+    self.countdownLabel.stringValue = [dcf stringFromTimeInterval: seconds];
 }
 
 @end

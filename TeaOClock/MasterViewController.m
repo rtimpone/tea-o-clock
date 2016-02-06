@@ -10,6 +10,7 @@
 #import "MasterViewController.h"
 #import "NotificationManager.h"
 #import "TimerManager.h"
+#import "UserPreferencesManager.h"
 
 @interface MasterViewController () <InterfaceViewControllerDelegate, TimerManagerDelegate>
 
@@ -24,6 +25,14 @@ NSString * const kLightInterfaceStoryboardIdentifier = @"kLightInterfaceStoryboa
 NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboardIdentifier";
 
 @implementation MasterViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    NSInteger minutes = [UserPreferencesManager userDefinedMinutes];
+    [self.interfaceController updateInterfaceForIntialStateWithMinutes: minutes];
+}
 
 - (void)prepareForSegue: (NSStoryboardSegue *)segue sender: (id)sender
 {
@@ -51,6 +60,7 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
 - (void)interfaceController: (id)controller requestsSetInitialMinutes: (NSInteger)minutes
 {
     self.timerManager.minutes = minutes;
+    [UserPreferencesManager setUserDefintedMinutes: minutes];
 }
 
 #pragma mark - Timer Manager Delegate
@@ -94,6 +104,9 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
     
     self.interfaceController = vc;
     vc.delegate = self;
+    
+    NSInteger minutes = [UserPreferencesManager userDefinedMinutes];
+    [vc updateInterfaceForIntialStateWithMinutes: minutes];
     
     [self.view addSubview: vc.view];
     [self addChildViewController: vc];

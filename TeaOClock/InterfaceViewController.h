@@ -30,6 +30,9 @@ typedef NS_ENUM(NSUInteger, TimerInterfaceState) {
 
 @property (weak) id <InterfaceViewControllerDelegate> delegate;
 
+/** Updates the interface for its initial state with a given number of minutes */
+- (void)updateInterfaceForIntialStateWithMinutes: (NSInteger)minutes;
+
 /** Updates the interface for a state change, i.e. the timer started or stopped */
 - (void)updateInterfaceForStateChanged: (TimerInterfaceState)interfaceState;
 
