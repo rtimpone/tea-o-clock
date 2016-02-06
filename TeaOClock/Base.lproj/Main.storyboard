@@ -213,20 +213,6 @@
                     <view key="view" id="4gj-U6-YEH">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="Ru9-Mi-hm8">
-                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                                <connections>
-                                    <segue destination="XfG-lQ-9wD" kind="embed" identifier="DefaultInterfaceControllerEmbedSegueIdentifier" id="YMj-4g-c1g"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Ru9-Mi-hm8" secondAttribute="trailing" id="JBe-eV-kEg"/>
-                            <constraint firstAttribute="bottom" secondItem="Ru9-Mi-hm8" secondAttribute="bottom" id="OEU-xy-5ky"/>
-                            <constraint firstItem="Ru9-Mi-hm8" firstAttribute="top" secondItem="4gj-U6-YEH" secondAttribute="top" id="iz6-kp-0Hu"/>
-                            <constraint firstItem="Ru9-Mi-hm8" firstAttribute="leading" secondItem="4gj-U6-YEH" secondAttribute="leading" id="nSE-53-RJB"/>
-                        </constraints>
                     </view>
                     <connections>
                         <outlet property="menuItemManager" destination="0Te-4T-Vee" id="iI1-y2-b2b"/>

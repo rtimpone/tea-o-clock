@@ -12,7 +12,7 @@
 #define DEFAULT_INTERFACE InterfaceTypeDark
 
 NSString * const kUserDefinedMinutes = @"userDefinedMinutes";
-NSString * const kUserDefinedInterfaceType = @"userDefinedInterfaceType";
+NSString * const kLastInterfaceTypeUsed = @"lastInterfaceTypeUsed";
 
 @implementation UserPreferencesManager
 
@@ -26,14 +26,14 @@ NSString * const kUserDefinedInterfaceType = @"userDefinedInterfaceType";
     return [self getIntegerForKey: kUserDefinedMinutes withDefaultValue: DEFAULT_MINUTES];
 }
 
-+ (void)setUserDefinedInterfaceType: (InterfaceType)type
++ (void)setLastInterfaceTypeUsed: (InterfaceType)type
 {
-    [self setInteger: type forKey: kUserDefinedInterfaceType];
+    [self setInteger: type forKey: kLastInterfaceTypeUsed];
 }
 
-+ (InterfaceType)userDefinedInterfaceType
++ (InterfaceType)lastInterfaceTypeUsed
 {
-    return [self getIntegerForKey: kUserDefinedInterfaceType withDefaultValue: DEFAULT_INTERFACE];
+    return [self getIntegerForKey: kLastInterfaceTypeUsed withDefaultValue: DEFAULT_INTERFACE];
 }
 
 #pragma mark - Helpers

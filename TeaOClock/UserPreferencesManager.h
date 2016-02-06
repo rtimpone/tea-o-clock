@@ -14,7 +14,7 @@
 + (void)setUserDefintedMinutes: (NSInteger)minutes;
 + (NSInteger)userDefinedMinutes;
 
-+ (void)setUserDefinedInterfaceType: (InterfaceType)type;
-+ (InterfaceType)userDefinedInterfaceType;
++ (void)setLastInterfaceTypeUsed: (InterfaceType)type;
++ (InterfaceType)lastInterfaceTypeUsed;
 
 @end

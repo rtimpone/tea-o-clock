@@ -22,28 +22,17 @@
 
 @end
 
-NSString * const kDefaultInterfaceControllerEmbedSegueIdentifier = @"DefaultInterfaceControllerEmbedSegueIdentifier";
 NSString * const kLightInterfaceStoryboardIdentifier = @"kLightInterfaceStoryboardIdentifier";
 NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboardIdentifier";
 
 @implementation MasterViewController
 
-- (void)prepareForSegue: (NSStoryboardSegue *)segue sender: (id)sender
-{
-    //this embed segue gets called before viewDidLoad
-    if ([segue.identifier isEqualToString: kDefaultInterfaceControllerEmbedSegueIdentifier])
-    {
-        self.interfaceController = segue.destinationController;
-        self.interfaceController.delegate = self;
-    }
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    NSInteger minutes = [UserPreferencesManager userDefinedMinutes];
-    [self.interfaceController updateInterfaceForIntialStateWithMinutes: minutes];
+    InterfaceType lastInterfaceUsed = [UserPreferencesManager lastInterfaceTypeUsed];
+    [self displayInterfaceForInterfaceType: lastInterfaceUsed];
 }
 
 #pragma mark - Interface Controller Delegate
@@ -70,14 +59,8 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
 
 - (void)menuItemManager: (MenuItemManager *)manager didSelectInterfaceType: (InterfaceType)type
 {
-    if (type == InterfaceTypeLight)
-    {
-        [self displayInterfaceWithIdentifier: kLightInterfaceStoryboardIdentifier];
-    }
-    else if (type == InterfaceTypeDark)
-    {
-        [self displayInterfaceWithIdentifier: kDarkInterfaceStoryboardIdentifier];
-    }
+    [UserPreferencesManager setLastInterfaceTypeUsed: type];
+    [self displayInterfaceForInterfaceType: type];
 }
 
 #pragma mark - Timer Manager Delegate
@@ -105,8 +88,10 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
 
 #pragma mark - Helpers
 
-- (void)displayInterfaceWithIdentifier: (NSString *)identifier
+- (void)displayInterfaceForInterfaceType: (InterfaceType)type
 {
+    NSString *identifier = [self storyboardIdentifierForInterfaceType: type];
+    
     [self.interfaceController.view removeFromSuperview];
     [self.interfaceController removeFromParentViewController];
     
@@ -121,6 +106,20 @@ NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboard
     
     NSInteger minutes = [UserPreferencesManager userDefinedMinutes];
     [vc updateInterfaceForIntialStateWithMinutes: minutes];
+}
+
+- (NSString *)storyboardIdentifierForInterfaceType: (InterfaceType)type
+{
+    if (type == InterfaceTypeLight)
+    {
+        return kLightInterfaceStoryboardIdentifier;
+    }
+    else if (type == InterfaceTypeDark)
+    {
+        return kDarkInterfaceStoryboardIdentifier;
+    }
+    
+    return nil;
 }
 
 @end
