@@ -6,85 +6,106 @@
 //  Copyright © 2016 Rob Timpone. All rights reserved.
 //
 
+#import "TOCInterfaceViewController.h"
 #import "TOCNotificationManager.h"
 #import "TOCTimerManager.h"
 #import "TOCMasterViewController.h"
 
-@interface TOCMasterViewController () <TOCTimerManagerDelegate>
+@interface TOCMasterViewController () <TOCInterfaceViewControllerDelegate, TOCTimerManagerDelegate>
 
-@property (weak) IBOutlet NSTextField *minutesLabel;
-@property (weak) IBOutlet NSTextField *countdownLabel;
-@property (weak) IBOutlet NSStepper *stepper;
-@property (weak) IBOutlet NSButton *startButton;
-@property (weak) IBOutlet NSButton *stopButton;
-
+@property (strong) NSViewController <TOCInterfaceViewController> *interfaceController;
 @property (strong) IBOutlet TOCNotificationManager *notificationManager;
 @property (strong) IBOutlet TOCTimerManager *timerManager;
 
 @end
 
-typedef NS_ENUM(NSUInteger, CountdownState) {
-    CountdownStateIsCountingDown,
-    CountdownStateIsStopped
-};
+NSString * const kDefaultInterfaceControllerEmbedSegueIdentifier = @"DefaultInterfaceControllerEmbedSegueIdentifier";
+NSString * const kLightInterfaceStoryboardIdentifier = @"kLightInterfaceStoryboardIdentifier";
+NSString * const kDarkInterfaceStoryboardIdentifier = @"kDarkInterfaceStoryboardIdentifier";
 
 @implementation TOCMasterViewController
+
+- (void)prepareForSegue: (NSStoryboardSegue *)segue sender: (id)sender
+{
+    if ([segue.identifier isEqualToString: kDefaultInterfaceControllerEmbedSegueIdentifier])
+    {
+        self.interfaceController = segue.destinationController;
+        self.interfaceController.delegate = self;
+    }
+}
+
+#pragma mark - Interface Controller Delegate
+
+- (void)interfaceControllerRequestsStartTimer: (id)controller
+{
+    [self.timerManager startTimer];
+    [self.interfaceController updateInterfaceForStateChanged: TimerInterfaceStateIsCountingDown];
+}
+
+- (void)interfaceControllerRequestsStopTimer: (id)controller
+{
+    [self.timerManager stopTimer];
+    [self.interfaceController updateInterfaceForStateChanged: TimerInterfaceStateIsStopped];
+}
+
+- (void)interfaceController: (id)controller requestsSetInitialMinutes: (NSInteger)minutes
+{
+    self.timerManager.minutes = minutes;
+}
 
 #pragma mark - Timer Manager Delegate
 
 - (void)timerManager: (TOCTimerManager *)manager secondsRemainingDidChange: (NSInteger)secondsRemaining
 {
-    static NSDateComponentsFormatter *dcf;
-    if (!dcf)
-    {
-        dcf = [NSDateComponentsFormatter new];
-        dcf.zeroFormattingBehavior = NSDateComponentsFormatterZeroFormattingBehaviorPad;
-        dcf.allowedUnits = NSCalendarUnitMinute | NSCalendarUnitSecond;
-    }
-
-    self.countdownLabel.stringValue = [dcf stringFromTimeInterval: secondsRemaining];
+    [self.interfaceController updateInterfaceForSecondsRemainingChanged: secondsRemaining];
 }
 
 - (void)timerManagerTimerDidFinish: (TOCTimerManager *)manager
 {
-    [self updateUIForCountdownState: CountdownStateIsStopped];
+    [self.interfaceController updateInterfaceForStateChanged: TimerInterfaceStateIsStopped];
     
     [self.notificationManager bounceDockBarIcon];
     [self.notificationManager showTimerFinishedUserNotification];
 }
 
-#pragma mark - Actions
+#pragma mark - Menu Actions
 
-- (IBAction)stepperAction: (NSStepper *)sender
+- (IBAction)lightAction: (NSMenuItem *)sender
 {
-    NSInteger minutes = sender.integerValue;
-    self.timerManager.minutes = minutes;
-    self.minutesLabel.stringValue = [NSString stringWithFormat: @"%ld min", (long)minutes];
+    [self selectMenuItem: sender];
+    [self displayInterfaceWithIdentifier: kLightInterfaceStoryboardIdentifier];
 }
 
-- (IBAction)startAction: (id)sender
+- (IBAction)darkAction: (NSMenuItem *)sender
 {
-    [self.timerManager startTimer];
-    [self updateUIForCountdownState: CountdownStateIsCountingDown];
-}
-
-- (IBAction)stopAction: (id)sender
-{
-    [self.timerManager stopTimer];
-    [self updateUIForCountdownState: CountdownStateIsStopped];
+    [self selectMenuItem: sender];
+    [self displayInterfaceWithIdentifier: kDarkInterfaceStoryboardIdentifier];
 }
 
 #pragma mark - Helpers
 
-- (void)updateUIForCountdownState: (CountdownState)countdownState
+- (void)displayInterfaceWithIdentifier: (NSString *)identifier
 {
-    BOOL isStopped = countdownState == CountdownStateIsStopped;
+    [self.interfaceController.view removeFromSuperview];
+    [self.interfaceController removeFromParentViewController];
     
-    self.startButton.enabled = isStopped;
-    self.stopButton.enabled = !isStopped;
-    self.stepper.enabled = isStopped;
-    self.minutesLabel.textColor = isStopped ? [NSColor whiteColor] : [NSColor grayColor];
-    self.countdownLabel.textColor = isStopped ? [NSColor grayColor] : [NSColor whiteColor];
+    NSStoryboard *storyboard = [NSStoryboard storyboardWithName: @"Main" bundle: nil];
+    NSViewController <TOCInterfaceViewController> *vc = [storyboard instantiateControllerWithIdentifier: identifier];
+    
+    self.interfaceController = vc;
+    vc.delegate = self;
+    
+    [self.view addSubview: vc.view];
+    [self addChildViewController: vc];
+}
+
+- (void)selectMenuItem: (NSMenuItem *)selectedItem
+{
+    NSMenu *menu = (NSMenu *)[[[[NSApplication sharedApplication] mainMenu] itemAtIndex: 1] submenu];
+    for (NSMenuItem *item in menu.itemArray)
+    {
+        item.state = (item == selectedItem);
+    }
 }
 
 @end

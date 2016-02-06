@@ -10,6 +10,5 @@
 
 @interface TOCAppDelegate : NSObject <NSApplicationDelegate>
 
-
 @end
 

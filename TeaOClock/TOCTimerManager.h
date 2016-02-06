@@ -25,7 +25,10 @@
 @property (weak) IBOutlet id <TOCTimerManagerDelegate> delegate;
 @property (nonatomic) NSInteger minutes;
 
+/** Begins a countdown timer starting with the number of minutes currently set */
 - (void)startTimer;
+
+/** Invalidates the current timer and stops the countdown */
 - (void)stopTimer;
 
 @end

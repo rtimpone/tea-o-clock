@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA047ACB1C51C29900394C9B /* TOCTimerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA047ACA1C51C29900394C9B /* TOCTimerManager.m */; };
 		DA047ACE1C51CCA300394C9B /* TOCNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA047ACD1C51CCA300394C9B /* TOCNotificationManager.m */; };
+		DA047AD11C51CEA400394C9B /* TOCBasicInterfaceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA047AD01C51CEA400394C9B /* TOCBasicInterfaceViewController.m */; };
 		DA831B2E1C4F2E010086AE8B /* TOCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B2D1C4F2E010086AE8B /* TOCAppDelegate.m */; };
 		DA831B311C4F2E010086AE8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B301C4F2E010086AE8B /* main.m */; };
 		DA831B341C4F2E010086AE8B /* TOCMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA831B331C4F2E010086AE8B /* TOCMasterViewController.m */; };
@@ -21,6 +22,9 @@
 		DA047ACA1C51C29900394C9B /* TOCTimerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCTimerManager.m; sourceTree = "<group>"; };
 		DA047ACC1C51CCA300394C9B /* TOCNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCNotificationManager.h; sourceTree = "<group>"; };
 		DA047ACD1C51CCA300394C9B /* TOCNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCNotificationManager.m; sourceTree = "<group>"; };
+		DA047ACF1C51CEA400394C9B /* TOCBasicInterfaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCBasicInterfaceViewController.h; sourceTree = "<group>"; };
+		DA047AD01C51CEA400394C9B /* TOCBasicInterfaceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TOCBasicInterfaceViewController.m; sourceTree = "<group>"; };
+		DA047AD21C51CEC300394C9B /* TOCInterfaceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TOCInterfaceViewController.h; sourceTree = "<group>"; };
 		DA831B291C4F2E000086AE8B /* TeaOClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeaOClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA831B2C1C4F2E010086AE8B /* TOCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TOCAppDelegate.h; sourceTree = "<group>"; };
 		DA831B2D1C4F2E010086AE8B /* TOCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TOCAppDelegate.m; sourceTree = "<group>"; };
@@ -64,6 +68,9 @@
 			children = (
 				DA831B2C1C4F2E010086AE8B /* TOCAppDelegate.h */,
 				DA831B2D1C4F2E010086AE8B /* TOCAppDelegate.m */,
+				DA047ACF1C51CEA400394C9B /* TOCBasicInterfaceViewController.h */,
+				DA047AD01C51CEA400394C9B /* TOCBasicInterfaceViewController.m */,
+				DA047AD21C51CEC300394C9B /* TOCInterfaceViewController.h */,
 				DA047ACC1C51CCA300394C9B /* TOCNotificationManager.h */,
 				DA047ACD1C51CCA300394C9B /* TOCNotificationManager.m */,
 				DA047AC91C51C29900394C9B /* TOCTimerManager.h */,
@@ -157,6 +164,7 @@
 			files = (
 				DA831B341C4F2E010086AE8B /* TOCMasterViewController.m in Sources */,
 				DA047ACB1C51C29900394C9B /* TOCTimerManager.m in Sources */,
+				DA047AD11C51CEA400394C9B /* TOCBasicInterfaceViewController.m in Sources */,
 				DA831B311C4F2E010086AE8B /* main.m in Sources */,
 				DA047ACE1C51CCA300394C9B /* TOCNotificationManager.m in Sources */,
 				DA831B2E1C4F2E010086AE8B /* TOCAppDelegate.m in Sources */,
